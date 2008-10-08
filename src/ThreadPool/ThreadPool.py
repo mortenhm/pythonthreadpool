@@ -1,6 +1,10 @@
 '''
 ThreadPool Implementation
+
+@author: Morten Holdflod Moeller - morten@holdflod.dk
+@license: LGPL v3 
 '''
+
 from __future__ import with_statement
 from threading import Thread, RLock
 from time import sleep
