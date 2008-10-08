@@ -6,10 +6,16 @@ from thread import start_new_thread
 from xmlrpclib import ServerProxy
 from ThreadPool import ThreadPoolMixIn
 from time import sleep
+import logging
 
 PORT_NUMBER = 20392 
 
+logging.basicConfig(level=logging.DEBUG,
+                format='%(asctime)s %(levelname)-8s thread: %(thread)d %(name)-16s %(message)s',
+                datefmt='%a, %d %b %Y %H:%M:%S')
+
 def test_method():
+    logging.info("test_method")
     return True
 
 class XmlRpcServer(ThreadingMixIn, SimpleXMLRPCServer):
@@ -31,8 +37,8 @@ class XmlRpcServerThreadPool(ThreadPoolMixIn, SimpleXMLRPCServer):
 
 
 def setup():
-    server = XmlRpcServerThreadPool()
-    #server = XmlRpcServer()
+    #server = XmlRpcServerThreadPool()
+    server = XmlRpcServer()
     start_new_thread(server.serve_forever, ())
 
 def call_test():
@@ -43,7 +49,6 @@ def run_test():
     threads = []
     
     for _ in range(0,10):
-        sleep(0.7)
         t = Thread(None, call_test)
         t.start()
         threads.append(t)
@@ -52,8 +57,5 @@ def run_test():
         t.join()
 
 setup()
-time_this(call_test)
-time_this(call_test)
-time_this(call_test)
-time_this(call_test)
-time_this(call_test)
+for _ in range(0,10):
+    logging.info("timed call %f"%time_this(call_test, True))
