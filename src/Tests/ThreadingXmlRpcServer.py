@@ -11,7 +11,7 @@ import logging
 PORT_NUMBER = 20392 
 
 logging.basicConfig(level=logging.DEBUG,
-                format='%(asctime)s %(levelname)-8s thread: %(thread)d %(name)-16s %(message)s',
+                format='%(asctime)s %(levelname)-8s thread: %(thread)d %(name)-5s %(message)s',
                 datefmt='%a, %d %b %Y %H:%M:%S')
 
 def test_method():
