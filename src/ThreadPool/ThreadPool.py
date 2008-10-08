@@ -29,7 +29,7 @@ class ThreadPoolMixIn:
             self.finish_request(request, client_address)
             self.close_request(request)
         except:
-            self.handle_error(request, client_address)
+            self.handle_error(request, client_address) #IGNORE:W0702
             self.close_request(request)
 
     def process_request(self, request, client_address):
