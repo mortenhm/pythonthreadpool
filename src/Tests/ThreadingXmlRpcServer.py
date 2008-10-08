@@ -46,16 +46,12 @@ def call_test():
     client.test()
 
 def run_test():
-    threads = []
+    for _ in range(0,1000):
+        call_test()
+        
     
-    for _ in range(0,10):
-        t = Thread(None, call_test)
-        t.start()
-        threads.append(t)
-    
-    for t in threads:
-        t.join()
 
 setup()
-for _ in range(0,10):
-    logging.info("timed call %f"%time_this(call_test, True))
+
+logging.info("timed call %f"%time_this(call_test, True))
+logging.info("timed call %f"%time_this(run_test, True))
