@@ -208,7 +208,7 @@ class ThreadPool:
         if (not callable(function)):
             raise TypeError("function is not a callable")
         if (not ( args == None or isinstance(args, list))):
-            raise TypeError("__max_workers is not a list")
+            raise TypeError("args is not a list")
         if (not (return_callback == None or callable(return_callback))):
             raise TypeError("return_callback is not a callable")
                 
