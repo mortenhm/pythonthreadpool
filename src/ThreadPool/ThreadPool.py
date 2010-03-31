@@ -245,7 +245,7 @@ class ThreadPool:
             try:
                 start_new_worker = False
                 if (self.__worker_count < self.__max_workers):
-                    if (self.__active_worker_count <= self.__worker_count):
+                    if (self.__active_worker_count == self.__worker_count):
                         start_new_worker = True
                         
                 self.__jobs.put(job)
